@@ -1,0 +1,27 @@
+
+name: 'package_name'
+version: '1.0'
+
+source-paths: ["models"]   # paths with source code to compile
+analysis-paths: ["analysis"] # path with analysis files which are compiled, but
+                             # not run
+target-path: "target"      # path for compiled code
+clean-targets: ["target"]  # directories removed by the clean task
+test-paths: ["test"]       # where to store test results
+data-paths: ["data"]       # load CSVs from this directory with `dbt seed`
+macro-paths: ["macros"]
+
+# specify per-model configs
+#models:
+#  package_name:             # define configs for this package (called
+#                            # "package_name" above)
+#    pardot:                 # assuming pardot is listed in models/
+#      enabled: false        # disable all pardot models except where overriden
+#      pardot_emails:        # override the configs for the pardot_emails model
+#        enabled: true       # enable this specific model
+#        materialized: true  # create a table instead of a view
+
+# uncomment below and add real repositories to add dependencies to this project
+#repositories:
+#  - "git@github.com:[your-org]/[some-repo-1]"
+#  - "git@github.com:[your-org]/[some-repo-2]"
