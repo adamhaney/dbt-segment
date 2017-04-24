@@ -19,19 +19,19 @@ SELECT *,
 session_start_end AS (
 SELECT *,(
      SELECT sent_at
-     FROM session_identifier
+     FROM events_with_session
      WHERE global_session_id = global_session_id
        ORDER BY sent_at DESC
        LIMIT 1
      ) as session_start,
      (
      SELECT sent_at
-     FROM session_identifier
+     FROM events_with_session
      WHERE global_session_id = global_session_id
        ORDER BY sent_at DESC
        LIMIT 1
      ) as session_end
-FROM session_identifier
+FROM events_with_session
 )
 
 SELECT *, EXTRACT(epoch FROM (session_end - session_start))::int as session_length FROM session_start_end
