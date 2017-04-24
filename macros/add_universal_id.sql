@@ -30,8 +30,11 @@ SELECT DISTINCT
 )
 
 SELECT *
-FROM {{ ref(tracks_table) }}
+FROM (
+     SELECT *, user_id || anonymous_id as merged_id
+     FROM {{ ref(tracks_table) }}
+) t
 LEFT JOIN lookups
-ON lookups.alias = {{ ref(tracks_table) }}.merged_id
+ON lookups.alias = t.merged_id
 
 {% endmacro %}
