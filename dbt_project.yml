@@ -1,5 +1,5 @@
 
-name: 'package_name'
+name: 'segment'
 version: '1.0'
 
 source-paths: ["models"]   # paths with source code to compile
