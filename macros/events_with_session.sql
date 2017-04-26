@@ -1,5 +1,5 @@
 -- From https://blog.modeanalytics.com/finding-user-sessions-sql/
-{% macro track_with_session(ref_track_table, session_limit_seconds = 60 * 10, user_id_col = 'user_id') %}
+{% macro events_with_session(ref_track_table, session_limit_seconds = 60 * 10, user_id_col = 'user_id') %}
 
 WITH events_with_session AS (
 SELECT *,
