@@ -1,5 +1,5 @@
 -- From https://blog.modeanalytics.com/finding-user-sessions-sql/
-{% macro track_with_session(track_table, session_limit_seconds = 60 * 10, user_id_col = 'user_id') %}
+{% macro track_with_session(ref_track_table, session_limit_seconds = 60 * 10, user_id_col = 'user_id') %}
 
 WITH events_with_session AS (
 SELECT *,
@@ -13,7 +13,7 @@ SELECT *,
          FROM (
               SELECT *,
                      LAG(sent_at,1) OVER (PARTITION BY user_id ORDER BY sent_at) AS last_event
-                FROM {{ ref(track_table) }}
+                FROM {{ ref_track_table }}
               ) last
        ) final), 
 session_start_end AS (
