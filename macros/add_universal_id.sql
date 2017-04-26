@@ -1,4 +1,4 @@
-{% macro add_universal_id(tracks_table, tracks_table_schema) %}
+{% macro add_universal_id(ref_tracks_table, tracks_table_schema) %}
 WITH realiases AS (
   SELECT
     anonymous_id AS alias,
@@ -32,7 +32,7 @@ SELECT DISTINCT
 SELECT *
 FROM (
      SELECT *, user_id || anonymous_id as merged_id
-     FROM {{ ref(tracks_table) }}
+     FROM {{ ref_tracks_table }}
 ) t
 LEFT JOIN lookups
 ON lookups.alias = t.merged_id
