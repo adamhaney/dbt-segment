@@ -32,7 +32,7 @@ SELECT DISTINCT
 SELECT *
 FROM (
      SELECT *, user_id || anonymous_id as merged_id
-     FROM {{tracks_table_schema}}.{{ ref_tracks_table }}
+     FROM {{ ref_tracks_table }}
 ) t
 LEFT JOIN lookups
 ON lookups.alias = t.merged_id
