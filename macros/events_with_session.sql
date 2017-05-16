@@ -12,7 +12,7 @@ SELECT *,
                    THEN 1 ELSE 0 END AS is_new_session
          FROM (
               SELECT *,
-                     LAG(sent_at,1) OVER (PARTITION BY user_id ORDER BY sent_at) AS last_event
+                     LAG(sent_at,1) OVER (PARTITION BY {{ user_id_col }} ORDER BY sent_at) AS last_event
                 FROM {{ ref_track_table }}
               ) last
        ) final), 
