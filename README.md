@@ -40,4 +40,7 @@ The date at which this session started
 #### session_end
 The date at which this session ended
 
+#### session_length
+The number of seconds between session start and session end
+
 
