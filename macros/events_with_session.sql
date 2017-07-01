@@ -28,7 +28,7 @@ SELECT *,(
      SELECT sent_at
      FROM events_with_session
      WHERE events_with_session.global_session_id = global_session_id
-       ORDER BY sent_at DESC
+       ORDER BY sent_at ASC
        LIMIT 1
      ) as session_end
 FROM events_with_session
