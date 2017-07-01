@@ -20,14 +20,14 @@ session_start_end AS (
 SELECT *,(
      SELECT sent_at
      FROM events_with_session
-     WHERE global_session_id = global_session_id
+     WHERE events_with_session.global_session_id = global_session_id
        ORDER BY sent_at DESC
        LIMIT 1
      ) as session_start,
      (
      SELECT sent_at
      FROM events_with_session
-     WHERE global_session_id = global_session_id
+     WHERE events_with_session.global_session_id = global_session_id
        ORDER BY sent_at DESC
        LIMIT 1
      ) as session_end
